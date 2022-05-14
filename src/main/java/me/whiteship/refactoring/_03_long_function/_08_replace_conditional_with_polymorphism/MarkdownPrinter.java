@@ -45,17 +45,7 @@ public class MarkdownPrinter extends StudyPrinter {
     /**
      * |:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|
      */
-    private String checkMark(Participant p) {
-        StringBuilder line = new StringBuilder();
-        for (int i = 1 ; i <= this.totalNumberOfEvents ; i++) {
-            if(p.homework().containsKey(i) && p.homework().get(i)) {
-                line.append("|:white_check_mark:");
-            } else {
-                line.append("|:x:");
-            }
-        }
-        return line.toString();
-    }
+
 
     private String getMarkdownForParticipant(Participant p) {
         return String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p),

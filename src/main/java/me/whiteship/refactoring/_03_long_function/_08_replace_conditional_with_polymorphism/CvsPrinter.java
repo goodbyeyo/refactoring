@@ -20,4 +20,28 @@ public class CvsPrinter extends StudyPrinter {
             });
         }
     }
+
+    private String cvsHeader(int totalNumberOfParticipants) {
+        StringBuilder header = new StringBuilder(String.format("참여자 (%d),", totalNumberOfParticipants));
+        for (int index = 1; index <= this.totalNumberOfEvents; index++) {
+            header.append(String.format("%d주차,", index));
+        }
+        header.append("참석율");
+        return header.toString();
+    }
+
+    private String getCvsForParticipant(Participant participant) {
+        StringBuilder line = new StringBuilder();
+        line.append(participant.username());
+        for (int i = 1 ; i <= this.totalNumberOfEvents ; i++) {
+            if(participant.homework().containsKey(i) && participant.homework().get(i)) {
+                line.append(",O");
+            } else {
+                line.append(",X");
+            }
+        }
+        line.append(",").append(participant.getRate(this.totalNumberOfEvents));
+        return line.toString();
+    }
+
 }
