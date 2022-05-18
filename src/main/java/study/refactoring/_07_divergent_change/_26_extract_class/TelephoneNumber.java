@@ -1,18 +1,18 @@
 package study.refactoring._07_divergent_change._26_extract_class;
 
 public class TelephoneNumber {
-    String officeAreaCode;
-    String officeNumber;
+    private String areaCode;
+    private String officeNumber;
 
     public TelephoneNumber() {
     }
 
     public String officeAreaCode() {
-        return officeAreaCode;
+        return areaCode;
     }
 
-    public void setOfficeAreaCode(String officeAreaCode) {
-        this.officeAreaCode = officeAreaCode;
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
     }
 
     public String officeNumber() {
