@@ -1,0 +1,36 @@
+package study.refactoring._11_primitive_obsession._32_replace_conditional_with_polymorphism.swtiches;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class EmployeeTestBefore {
+
+    @Test
+    void fulltime() {
+        EmployeeBefore employee = new EmployeeBefore("full-time", List.of("spring", "jpa"));
+        assertEquals(120, employee.vacationHours());
+        assertTrue(employee.canAccessTo("new project"));
+        assertTrue(employee.canAccessTo("spring"));
+    }
+
+    @Test
+    void partime() {
+        EmployeeBefore employee = new EmployeeBefore("part-time", List.of("spring", "jpa"));
+        assertEquals(80, employee.vacationHours());
+        assertFalse(employee.canAccessTo("new project"));
+        assertTrue(employee.canAccessTo("spring"));
+    }
+
+    @Test
+    void temporal() {
+        EmployeeBefore employee = new EmployeeBefore("temporal", List.of("jpa"));
+        assertEquals(32, employee.vacationHours());
+        assertFalse(employee.canAccessTo("new project"));
+        assertFalse(employee.canAccessTo("spring"));
+        assertTrue(employee.canAccessTo("jpa"));
+    }
+
+}
